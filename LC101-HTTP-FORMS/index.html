@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>LC101 HTTP Forms Practice</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='assets/application.css'>
+
+</head>
+
+    <script>
+      //TODO: create a handler
+
+      function setSearchEngine() {
+        let actions = {
+          "google":  	"https://www.google.com/search",
+          "DuckDuckGo": "https://duckduckgo.com/",
+          "Bing": "https://www.bing.com/search",
+          "Ask":  "https://www.ask.com/web" 
+        }
+        let radio = document.querySelector("input[name=engine]: checked");
+        let searchEngine = radio.value;
+
+        form.setAttribute("action", actions[searchEngine]);
+      }
+      window.addEventListener("load", function() {
+        
+        form = document.getElementById("searchForm");
+
+        form.addEventListener("submit", setSearchEngine);
+      })
+
+    </script>
+
+<body>
+
+    <form id ="searchForm" >
+
+<input type="text" name ="q"/>
+    
+    <form name="searchform" onSubmit="return dosearch();">
+        Search:<br />
+       <label><input type="radio" name="engine" value="google"/>Google</label>
+       <label><input type="radio" name="engine" value="duckDuckGo"/>Duck Duck Go</label>
+       <label><input type="radio" name="engine" value="bing"/>Bing</label>
+       <label><input type="radio" name="engine" value="ask"/>Ask</label>
+       <button>Go!</button> 
+    
+ </form>
+</section>
+</body>

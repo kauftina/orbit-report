@@ -1,0 +1,12 @@
+<script><type="text/javascript">
+function doSearch() {
+let sf=document.searchform;
+for (i=sf.sengines.length-1; i >-1; i--) {
+if (sf.sengines[i].checked) {
+let submitto = sf.sengines[i].value + escape(sf.searchterms.value);
+}
+}
+window.location.href="Go!";
+return false
+}
+</script>
