@@ -6,7 +6,7 @@ package restaurant;
         private String category;
         private boolean isNew;
         private boolean isVegan;
-        public MenuItem(String name, double price, String description, String category, boolean, isVegan) {
+        public MenuItem(String name, double price, String description, String category, boolean isVegan) {
             this.price = price;
             this.description = description;
             this.category = category;
