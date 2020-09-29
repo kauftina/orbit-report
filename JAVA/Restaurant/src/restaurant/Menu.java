@@ -9,8 +9,9 @@ public class Menu {
     private Date lastUpdated;
 
     public Menu() {
-        this.lastUpdated = new ArrayList<>();
+        //this.lastUpdated = new ArrayList<>();
         this.lastUpdated = new Date();
+
 
     }
     public void add(MenuItem m) {

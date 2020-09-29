@@ -1,25 +1,34 @@
 package org.launchcode.hellospring.controllers.controllers;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class HelloController {
-    @GetMapping("helloform")
-    @ResponseBody
-    public String helloForm() {
-        return "<form method='POST' action='hello'>" +
-                "<input type='text' name='name'>" +
-                "<select name='language'>" +
-                "<option value='english'>English</option>" +
-                "<option value='spanish'>Spanish</option>" +
-                "<option value='dutch'>Dutch</option>" +
-                "<option value ='ukrainian'>Ukrainian</option>" +
-                "<option value='latin'>Latin</option>" +
-                "</select>" +
-                "<input type='submit' value='Greet Me'>" +
-                "</form>";
+
+    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
+    public String hello(@RequestParam String name, Model model) {
+        String greeting = "Hello, " + name + "!";
+        model.addAttribute("greeting", greeting);
+        return "hello";
+
     }
+    @GetMapping("hello/{name}")
+    public String helloAgain(@PathVariable String name, Model model)  {
+        String greeting = "Hello, " + name + "!";
+        model.addAttribute("greeting", greeting);
+        return "hello";
+    }
+
+    @GetMapping("form")
+    public String helloForm() {
+        return "form";
+    }
+
     @GetMapping("hello")
     @ResponseBody
     public String sayHello(@RequestParam String name, @RequestParam String language) {
@@ -39,5 +48,16 @@ public class HelloController {
             result = "Salve, " + name;
         }
         return result;
+    }
+    @GetMapping("hello-names")
+    public String helloNames(Model model) {
+        List<String> names = new ArrayList<>();
+        names.add("LaunchCode");
+        names.add("Java");
+        names.add("JavaScript");
+        model.addAttribute("names", names);
+        return"hello-lists";
+
+
     }
 }
